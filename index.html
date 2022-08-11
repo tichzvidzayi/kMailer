@@ -6,10 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Human Working on a CASE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
+ 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -35,7 +32,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <h1>   Working on a CASE</h1>
+        <h1>   Simulating a CASE</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -71,9 +68,23 @@
     </div>
   </section>
 
-  
+ <footer>
+  <p>
+<br><br><br>
+    If time is between Monday and Friday (0700hrs - 2000hrs send email after 2 hrs, 4hrs etc).
+   <br>
+    If time is before 7 am send email at 0700hrs same day.
+  <br>
+    If time is after hours 2000hrs sent the next day morning 0700hrs.
+  <br>
+    If time is Friday after 2000hrs or a weekend send email on Monday 0700AM.
+    <br>
 
-  </footer>
+   Default time on a case is 2 hours but can be adjust to 4hrs, 24hrs, 72 hrs etc.
+  </p>
+ </footer>
+
+  
   
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -115,36 +126,32 @@ var p = dt.getDate();
 
   if( (dt.getDay() <= 5 && dt.getDay()> 0) && dt.getHours() >= 7 && dt.getHours() < 20)
   {
-    //If its between Monday and Friday (0700hrs - 2000hrs sent email after 2 hrs, 4hrs etc)
+    // If time is between Monday and Friday (0700hrs - 2000hrs send email after 2 hrs, 4hrs etc).
      replyAt =  "(today) " + (weekday[dt.getDay()]) +" at " + dt.toLocaleTimeString();
     }
   else if ((dt.getDay() <= 5 && dt.getDay()> 0) && dt.getHours()<7)
      {
-      // If its early morning before work sent at 0700hrs same day
+      // If time is before 7 am send email at 0700hrs same day.
        replyAt = "(today) " + (weekday[dt.getDay()]) +" at " + "0700 AM";
      }
-
      else if ((dt.getDay() <= 4 && dt.getDay()> 0) && dt.getHours()> 20)
      {
-      // If its after hours sent tomoroow morning 0700hrs
+      // If time is after hours 2000hrs sent the next day morning 0700hrs.
        replyAt = "(tommorrow) " + (weekday[dt.getDay() + 1]) +" at " + "0700 AM";
      }
-
-  else
-  { //If Friday after 2000hrs or weekend sent email on Monday 0700AM
+    else
+    { //If time is Friday after 2000hrs or a weekend send email on Monday 0700AM.
     replayAt = weekday[1] + "at 0700AM.";
-  }
+    }
  
   var msg = "A client has sent a message at " + 
 receivedDate + " and its " + workingHours + 
 ". An automatic reply email will be sent "  + replyAt ;
 
-//msg =  replyAt;
 
 document.getElementById("reply").innerHTML = msg;
 }
 </script>
-
 
 </body>
 
